@@ -15,4 +15,10 @@
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="k8s\create-service-acr-service-principal.sh" />
+    <Content Include="k8s\deploy-webapi.yml" />
+    <Content Include="k8s\deploy-webapp.yml" />
+    <Content Include="k8s\deploy-webapp-ingress.yml" />
+  </ItemGroup>
 </Project>

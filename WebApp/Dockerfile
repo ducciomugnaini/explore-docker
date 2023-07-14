@@ -20,3 +20,10 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "WebApp.dll"]
+######################
+# Installing ping
+RUN apt-get update
+RUN apt-get install -y iputils-ping # <- change this according to your image
+RUN apt-get install -y dnsutils
+RUN apt-get install -y iproute2
+######################

@@ -1,0 +1,19 @@
+﻿apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webapp
+  namespace: default
+  annotations:
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: "webapp.com"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: webapp
+                port:
+                  number: 8080

@@ -1,24 +1,24 @@
 version: '3.4'
 
 services:
+  
   webapi:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_URLS=http://+:80
     ports:
-      - "5107:80"
-      - "51443:443"
+      - "5000:80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      
   webapp:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
-      - WebApiBaseAddress=http://webapi
+      - ASPNETCORE_URLS=http://+:80
+      - WebApiBaseAddress=http://webapi      
     ports:
-      - "5104:80"
-      - "50443:443"
+      - "5001:80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
