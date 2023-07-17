@@ -5,12 +5,14 @@ pipeline {
     stages {
         stage ('Clean workspace') {
           steps {
+            echo 'workspace cleaning ...'
             cleanWs()
           }
         }
         
         stage('Restore packages') {
           steps {
+            echo 'Restore packages ...'
             bat "dotnet restore ${workspace}\\<path-to-solution>\\<solution-project-name>.sln"
           }
         }
