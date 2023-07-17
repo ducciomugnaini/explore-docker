@@ -1,11 +1,20 @@
-stage ('Clean workspace') {
-  steps {
-    cleanWs()
-  }
+pipeline {
+    
+    agent any
+
+    stages {
+        stage ('Clean workspace') {
+          steps {
+            cleanWs()
+          }
+        }
+        
+        stage('Restore packages') {
+          steps {
+            bat "dotnet restore ${workspace}\\<path-to-solution>\\<solution-project-name>.sln"
+          }
+        }
+    }   
 }
 
-stage('Restore packages') {
-  steps {
-    bat "dotnet restore ${workspace}\\<path-to-solution>\\<solution-project-name>.sln"
-  }
-}
+
