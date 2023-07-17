@@ -3,3 +3,9 @@ stage ('Clean workspace') {
     cleanWs()
   }
 }
+
+stage('Restore packages') {
+  steps {
+    bat "dotnet restore ${workspace}\\<path-to-solution>\\<solution-project-name>.sln"
+  }
+}
