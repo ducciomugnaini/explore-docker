@@ -9,13 +9,15 @@
     <DockerServiceName>webapp</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="docker-compose.override.yml">
+    <None Include="docker-compose.override.develop.yml">
       <DependentUpon>docker-compose.yml</DependentUpon>
     </None>
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="docker-compose.override.rel.yml" />
+    <Content Include="docker-compose.override.release.yml">
+      <DependentUpon>docker-compose.yml</DependentUpon>
+    </Content>
   </ItemGroup>
 </Project>

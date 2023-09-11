@@ -28,16 +28,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{DD990026-5B4
 		k8s\deploy-webapp-ingress.yml = k8s\deploy-webapp-ingress.yml
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-develop", "docker-develop", "{7A0AA30A-A79D-442B-A2AF-75FC9BBE22F2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-develop", "docker-develop", "{420DFBD3-09DE-48FD-B946-6CDE16B0E073}"
 	ProjectSection(SolutionItems) = preProject
-		WebApi\webapi.develop.dockerfile = WebApi\webapi.develop.dockerfile
-		WebApp\webapp.develop.dockerfile = WebApp\webapp.develop.dockerfile
+		WebApi\webapiDevelop.Dockerfile = WebApi\webapiDevelop.Dockerfile
+		WebApp\webappDevelop.Dockerfile = WebApp\webappDevelop.Dockerfile
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-release", "docker-release", "{5D7C4805-531F-4A72-87B2-9D877C3684F3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-release", "docker-release", "{888709DF-6D0C-42D2-9CEA-7758E1ECECD4}"
 	ProjectSection(SolutionItems) = preProject
-		WebApi\webapi.release.dockerfile = WebApi\webapi.release.dockerfile
-		WebApp\webapp.release.dockerfile = WebApp\webapp.release.dockerfile
+		WebApi\webapiRelease.Dockerfile = WebApi\webapiRelease.Dockerfile
+		WebApp\webappRelease.Dockerfile = WebApp\webappRelease.Dockerfile
 	EndProjectSection
 EndProject
 Global

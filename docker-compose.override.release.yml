@@ -1,22 +1,26 @@
-version: '3.4'
+﻿version: '3.4'
 
 services:
   
   webapi:
+    build:
+      context: .
+      dockerfile: WebApi/webapiRelease.Dockerfile
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
     ports:
       - "5000:80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-      
+  
   webapp:
+    build:
+      context: .
+      dockerfile: WebApp/webappRelease.Dockerfile
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - WebApiBaseAddress=http://webapi      
+      - WebApiBaseAddress=http://webapi
     ports:
       - "5001:80"
     volumes:
