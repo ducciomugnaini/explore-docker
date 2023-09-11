@@ -14,7 +14,20 @@ Debug
 WebApp  
 http://localhost:5001/  
 WebApi  
-http://localhost:5000/weatherforecast
+http://localhost:5000/weatherforecast  
+WebApi Swagger  
+https://localhost:5000/swagger/index.html
+
+
+## To Deploy
+
+Remember to automatize:
+- remove from `launchSettings.json` the key `"ASPNETCORE_ENVIRONMENT": "Development"` of both WebApp and WebApi
+
+## To Dockerize and push image
+
+
+
 
 ## K8s settings
 
