@@ -28,6 +28,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{DD990026-5B4
 		k8s\deploy-webapp-ingress.yml = k8s\deploy-webapp-ingress.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-develop", "docker-develop", "{7A0AA30A-A79D-442B-A2AF-75FC9BBE22F2}"
+	ProjectSection(SolutionItems) = preProject
+		WebApi\webapi.develop.dockerfile = WebApi\webapi.develop.dockerfile
+		WebApp\webapp.develop.dockerfile = WebApp\webapp.develop.dockerfile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-release", "docker-release", "{5D7C4805-531F-4A72-87B2-9D877C3684F3}"
+	ProjectSection(SolutionItems) = preProject
+		WebApi\webapi.release.dockerfile = WebApi\webapi.release.dockerfile
+		WebApp\webapp.release.dockerfile = WebApp\webapp.release.dockerfile
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
