@@ -51,6 +51,10 @@ $ImageTagVersion = 'v3'
 Push-Image-To-ACR $ResourceGroupName $DockerImageName_webapi $ImageTagVersion
 Push-Image-To-ACR $ResourceGroupName $DockerImageName_webapp $ImageTagVersion
 
+$AksClusterName = 'explore-aks'
+$AcrName = (az acr list --resource-group explore-docker-aks-rg | convertfrom-json)[0].name
+az aks get-credentials --resource-group $ResourceGroupName --name $AksClusterName
+az aks update --name $AksClusterName --resource-group $ResourceGroupName --attach-acr $AcrName
 
 
 

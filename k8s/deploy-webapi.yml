@@ -9,17 +9,15 @@ spec:
   selector:
     matchLabels:
       service: webapi
-      
   template:
     metadata:
       labels:
-        #app: weather-forecast
+        app: weather-forecast
         service: webapi
     spec:
       containers:
         - name: webapi
-          #image: exploredockerducciomugnaini.azurecr.io/webapi:v2
-          image: mugna87/webapi:v4
+          image: exploredockerducciomugnaini.azurecr.io/webapi:v3
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
@@ -33,14 +31,12 @@ kind: Service
 metadata:
   name: webapi
   labels:
-    #app: weather-forecast
+    app: weather-forecast
     service: webapi
 spec:
-  selector:
-    #app: weather-forecast
-    service: webapi
   ports:
     - port: 80
       targetPort: 80
       protocol: TCP
-  
+  selector:
+    service: webapi
