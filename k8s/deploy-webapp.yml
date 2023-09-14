@@ -40,17 +40,10 @@ metadata:
     app: weather-forecast
     service: webapp
 spec:
-  # Expose the service on a static port on each node
-  # so that we can access the service from outside the cluster 
-  #type: NodePort
-
-  # When the node receives a request on the static port (30163)
-  # "select pods with the label 'app' set to 'echo-hostname'"
-  # and forward the request to one of them
+  type: LoadBalancer
   selector:
     app: weather-forecast
-    service: webapp
-  
+    service: webapp  
   ports:
     # Three types of ports for a service
     # nodePort - a static port assigned on each the node
@@ -58,3 +51,4 @@ spec:
     # targetPort - the container port to send requests to
     - port: 8080
       targetPort: 80
+      protocol: TCP

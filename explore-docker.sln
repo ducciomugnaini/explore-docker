@@ -40,6 +40,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-release", "docker-re
 		WebApp\webappRelease.Dockerfile = WebApp\webappRelease.Dockerfile
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "devops", "devops", "{8D0B5BAF-B979-4662-91AA-2CD20213280A}"
+	ProjectSection(SolutionItems) = preProject
+		devops\pushDockerImageToACR.ps1 = devops\pushDockerImageToACR.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
