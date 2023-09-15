@@ -108,6 +108,20 @@ stages:
           ArtifactName: 'webapi_publish_win'
           publishLocation: 'Container'
 
+      # test python
+      - task: CopyFiles@2
+        displayName: 'Copy devops directory'
+        inputs:
+          SourceFolder: './devops'
+          Contents: '**'
+          TargetFolder: '$(build.artifactstagingdirectory)/devops'
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish devops directory'
+        inputs:
+          PathtoPublish: '$(build.artifactstagingdirectory)/devops'
+          ArtifactName: 'devops'
+          publishLocation: 'Container'
+
       #- task: Docker@2
       #  inputs:
       #    containerRegistry: 'acr-weatherapp'
