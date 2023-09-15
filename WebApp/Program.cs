@@ -2,6 +2,9 @@ using WebApp;
 
 internal class Program
 {
+    public static readonly string WebApiBaseAddress = nameof(WebApiBaseAddress);
+    public static readonly string HelloFrontendPhrase = nameof(HelloFrontendPhrase);
+
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +15,7 @@ internal class Program
         builder.Services.AddHttpClient<WeatherClient>(client =>
         {
             //var baseAddress = new Uri(configuration.GetValue<string>("backendUrl"));
-            var baseAddress = new Uri(Environment.GetEnvironmentVariable("WebApiBaseAddress") ?? string.Empty);
+            var baseAddress = new Uri(Environment.GetEnvironmentVariable(WebApiBaseAddress) ?? string.Empty);
             
             client.BaseAddress = baseAddress;
         });

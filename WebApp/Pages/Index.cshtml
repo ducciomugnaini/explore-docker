@@ -2,6 +2,7 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Weather Forecast - WebApp";
+    var helloFrontendPhrase = Environment.GetEnvironmentVariable(Program.HelloFrontendPhrase) ?? string.Empty;
 }
 
 <div class="text-center">
@@ -9,8 +10,7 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-Weather Forecast
-
+Weather Forecast - @helloFrontendPhrase.ToString()
 
 <table class="table">
     <thead>

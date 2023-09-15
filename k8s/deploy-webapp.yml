@@ -1,9 +1,9 @@
-﻿apiVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp
   labels:
     app: weather-forecast
+  name: webapp
 spec:
   replicas: 1
   selector:
@@ -16,30 +16,16 @@ spec:
         service: webapp
     spec:
       containers:
-        - name: webapp
-          image: exploredockerducciomugnaini.azurecr.io/webapp:v3
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 80
-              protocol: TCP
-          env:
-            - name: ASPNETCORE_URLS
-              value: http://+:80
-            - name: WebApiBaseAddress
-              value: http://webapi
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: webapp
-  labels:
-    app: weather-forecast
-    service: webapp
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 80
-      protocol: TCP
-  selector:
-    service: webapp
+      - env:
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        - name: WebApiBaseAddress
+          value: http://webapi
+        - name: HelloFrontendPhrase
+          value: HELLO_FRONTEND_PHRASE
+        image: exploredockerducciomugnaini.azurecr.io/webapp:v3
+        imagePullPolicy: IfNotPresent
+        name: webapp
+        ports:
+        - containerPort: 80
+          protocol: TCP

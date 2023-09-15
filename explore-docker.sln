@@ -25,7 +25,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{DD990026-5B4
 		k8s\debug_dns.yml = k8s\debug_dns.yml
 		k8s\deploy-webapi.yml = k8s\deploy-webapi.yml
 		k8s\deploy-webapp.yml = k8s\deploy-webapp.yml
-		k8s\deploy-webapp-ingress.yml = k8s\deploy-webapp-ingress.yml
+		k8s\deploy-webapp-service.yml = k8s\deploy-webapp-service.yml
+		k8s\deploy-webapi-service.yml = k8s\deploy-webapi-service.yml
+		k8s\deploy-webapp-service-ingress.yml = k8s\deploy-webapp-service-ingress.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-develop", "docker-develop", "{420DFBD3-09DE-48FD-B946-6CDE16B0E073}"
@@ -40,9 +42,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-release", "docker-re
 		WebApp\webappRelease.Dockerfile = WebApp\webappRelease.Dockerfile
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "devops", "devops", "{8D0B5BAF-B979-4662-91AA-2CD20213280A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "devops-automation", "devops-automation", "{8D0B5BAF-B979-4662-91AA-2CD20213280A}"
 	ProjectSection(SolutionItems) = preProject
 		devops\pushDockerImageToACR.ps1 = devops\pushDockerImageToACR.ps1
+		devops\setK8sDeployEnvVariable.py = devops\setK8sDeployEnvVariable.py
+		devops\removeK8sDeployEnvVariable.py = devops\removeK8sDeployEnvVariable.py
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{9426C622-2926-44DB-A758-90B04CC26916}"
