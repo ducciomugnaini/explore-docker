@@ -1,0 +1,107 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger: 
+  - none # Disable CI triggers.
+
+pool:
+  vmImage: 'windows-2019'
+
+variables:
+  buildConfiguration: 'Release'
+
+stages:
+
+  - stage: build
+    displayName: 'Stage: Build Project'
+    jobs:
+    - job: Build
+      steps:
+      
+      # BUILD BACKEND
+    
+      - task: NuGetToolInstaller@1
+        inputs:
+          versionSpec: '6.2.0'
+
+      - task: NuGetCommand@2
+        displayName: 'Restore NuGet'
+        inputs:
+          command: 'restore'
+          restoreSolution: './explore-docker.sln'
+          feedsToUse: 'config'
+          nugetConfigPath: './NuGet.Config'
+          restoreDirectory: './'
+
+      # test phase missing
+
+      - task: DotNetCoreCLI@2
+        displayName: 'Command: dotnet build WebApi.csproj'
+        inputs:
+          command: 'build'
+          projects: './WebApi/WebApi.csproj'
+          arguments: '--configuration $(buildConfiguration)'
+
+      - task: DotNetCoreCLI@2
+        displayName: 'Command: dotnet build WebApp.csproj'
+        inputs:
+          command: 'build'
+          projects: './WebApp/WebApp.csproj'
+          arguments: '--configuration $(buildConfiguration)'
+    
+      - task: DotNetCoreCLI@2
+        displayName: 'Command: publish WebApi.csproj'
+        inputs:
+          command: 'publish'
+          publishWebProjects: false
+          projects: './WebApi/WebApi.csproj'
+          arguments: '-c Release -r win-x64 --output ./webapi_publish_win'
+          zipAfterPublish: false
+          modifyOutputPath: false
+
+      - task: DotNetCoreCLI@2
+        displayName: 'Command: publish WebApp.csproj'
+        inputs:
+          command: 'publish'
+          publishWebProjects: false
+          projects: './WebApp/WebApp.csproj'
+          arguments: '-c Release -r win-x64 --output ./webapp_publish_win'
+          zipAfterPublish: false
+          modifyOutputPath: false
+
+      - task: CopyFiles@2
+        displayName: 'Copy build directory'
+        inputs:
+          SourceFolder: './webapi_publish_win'
+          Contents: '**'
+          TargetFolder: '$(build.artifactstagingdirectory)/webapi_publish_win'
+
+      - task: CopyFiles@2
+        displayName: 'Copy build directory'
+        inputs:
+          SourceFolder: './webapp_publish_win'
+          Contents: '**'
+          TargetFolder: '$(build.artifactstagingdirectory)/webapp_publish_win'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish artifact ready to drop (webapp)'
+        inputs:
+          PathtoPublish: '$(build.artifactstagingdirectory)/webapp_publish_win'
+          ArtifactName: 'webapp_publish_win'
+          publishLocation: 'Container'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish artifact ready to drop (webapi)'
+        inputs:
+          PathtoPublish: '$(build.artifactstagingdirectory)/webapi_publish_win'
+          ArtifactName: 'webapi_publish_win'
+          publishLocation: 'Container'
+
+      - task: Docker@2
+        inputs:
+          containerRegistry: 'acr-weatherapp'
+          repository: 'exploredockerducciomugnaini'
+          command: 'buildAndPush'
+          Dockerfile: './WebApi/webapiRelease.Dockerfile'
