@@ -27,7 +27,7 @@ stages:
         inputs:
           scriptSource: 'filePath'
           scriptPath: '$(System.DefaultWorkingDirectory)/devops/setK8sDeployEnvVariable.py'
-          arguments: '''$(helloFrontendPhrase)'''
+          arguments: '"$(helloFrontendPhrase)"'
           workingDirectory: '$(System.DefaultWorkingDirectory)/devops'
           failOnStderr: true
       
