@@ -21,6 +21,15 @@ stages:
       steps:
       
       # BUILD BACKEND
+
+      - task: PythonScript@0
+        inputs:
+          scriptSource: 'filePath'
+          scriptPath: '$(System.DefaultWorkingDirectory)/devops/setK8sDeployEnvVariable.py'
+          arguments: 'FFFFFFF'
+          failOnStderr: true
+      
+      # BUILD BACKEND
     
       - task: NuGetToolInstaller@1
         inputs:
