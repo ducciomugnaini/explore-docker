@@ -20,7 +20,7 @@ stages:
     - job: Build
       steps:
       
-      # BUILD BACKEND
+      # CHANGE ENV VARAIBLE IN DEPLOY YML
 
       - task: PythonScript@0
         inputs:
@@ -108,9 +108,9 @@ stages:
           ArtifactName: 'webapi_publish_win'
           publishLocation: 'Container'
 
-      - task: Docker@2
-        inputs:
-          containerRegistry: 'acr-weatherapp'
-          repository: 'exploredockerducciomugnaini'
-          command: 'buildAndPush'
-          Dockerfile: './WebApi/webapiRelease.Dockerfile'
+      #- task: Docker@2
+      #  inputs:
+      #    containerRegistry: 'acr-weatherapp'
+      #    repository: 'exploredockerducciomugnaini'
+      #    command: 'buildAndPush'
+      #    Dockerfile: './WebApi/webapiRelease.Dockerfile'
