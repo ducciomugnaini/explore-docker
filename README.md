@@ -49,3 +49,16 @@ minikube service webapp
 
 :: [Deploy Kubernetes Resources in Minikube cluster using Terraform](https://dev.to/chefgs/deploy-kubernetes-resources-in-minikube-cluster-using-terraform-1p8o)
 :: [K8s secret](https://stackoverflow.com/questions/62137632/create-kubernetes-secret-for-docker-registry-terraform)
+
+To deploy application
+
+~~~
+terraform plan -var-file .\environment-dev.tfvars
+terraform apply -var-file .\environment-dev.tfvars
+~~~
+
+To destroy all
+~~~
+terraform destroy -var-file .\environment-dev.tfvars
+~~~
+

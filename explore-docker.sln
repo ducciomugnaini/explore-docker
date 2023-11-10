@@ -63,11 +63,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "terraform", "terraform", "{4C2BCE4A-6441-47AE-8005-7736D59F7D68}"
 	ProjectSection(SolutionItems) = preProject
-		terraform\main.tf = terraform\main.tf
 		terraform\providers.tf = terraform\providers.tf
 		terraform\config.json = terraform\config.json
 		terraform\environment-dev.tfvars = terraform\environment-dev.tfvars
 		terraform\.gitignore = terraform\.gitignore
+		terraform\secret.tf = terraform\secret.tf
+		terraform\webapi-deploy.tf = terraform\webapi-deploy.tf
+		terraform\webapp-deploy.tf = terraform\webapp-deploy.tf
 	EndProjectSection
 EndProject
 Global
