@@ -17,8 +17,7 @@ spec:
     spec:
       containers:
         - name: webapi
-          #image: exploredockerducciomugnaini.azurecr.io/webapi:v3
-          image: digistatcontainerregistry.azurecr.io/webapi:v1
+          image: exploredockerducciomugnaini.azurecr.io/webapi:v3          
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80

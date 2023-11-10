@@ -23,8 +23,7 @@ spec:
           value: http://webapi
         - name: HelloFrontendPhrase
           value: HELLO_FRONTEND_PHRASE
-        #image: exploredockerducciomugnaini.azurecr.io/webapp:v3
-        image: digistatcontainerregistry.azurecr.io/webapp:v1
+        image: exploredockerducciomugnaini.azurecr.io/webapp:v3        
         imagePullPolicy: IfNotPresent
         name: webapp
         ports:

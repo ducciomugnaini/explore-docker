@@ -1,0 +1,9 @@
+{
+  "auths": {
+    "${acr-server}": {
+      "username": "${acr-username}",
+      "password": "${acr-password}",
+      "auth": "${acr-auth}"
+    }
+  }
+}
