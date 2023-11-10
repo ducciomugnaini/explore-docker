@@ -56,7 +56,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{9426C622
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-compose", "docker-compose", "{FA96B2E2-DEB4-4160-A72D-AA8C879EF7D3}"
 	ProjectSection(SolutionItems) = preProject
-		docker-compose.dcproj = docker-compose.dcproj
 		docker-compose.override.develop.yml = docker-compose.override.develop.yml
 		docker-compose.override.release.yml = docker-compose.override.release.yml
 	EndProjectSection
